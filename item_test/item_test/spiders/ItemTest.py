@@ -10,10 +10,10 @@ class ItemtestSpider(scrapy.Spider):
     def parse(self, response):
         papers = response.xpath(".//*[@class='day']")
         for paper in papers:
-            url = paper.xpath(".//*[@class='postTitle']/a/@href").extract()[0].encode('utf-8')
-            title = paper.xpath(".//*[@class='postTitle']/a/text()").extract()[0].encode('utf-8')
-            time = paper.xpath(".//*[@class='dayTitle']/a/text()").extract()[0].encode('utf-8')
-            content = paper.xpath("//*[@class='postCon']/div/text()").extract()[0].encode('utf-8')
+            url = paper.xpath(".//*[@class='postTitle']/a/@href").extract()[0]
+            title = paper.xpath(".//*[@class='postTitle']/a/text()").extract()[0]
+            time = paper.xpath(".//*[@class='dayTitle']/a/text()").extract()[0]
+            content = paper.xpath("//*[@class='postCon']/div/text()").extract()[0]
             item = ItemTestItem(url=url, title=title, time=time, content=content)
             yield item
 
