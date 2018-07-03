@@ -16,4 +16,5 @@ class ItemtestSpider(scrapy.Spider):
             content = paper.xpath("//*[@class='postCon']/div/text()").extract()[0].encode('utf-8')
             item = ItemTestItem(url=url, title=title, time=time, content=content)
             yield item
+
         pass
